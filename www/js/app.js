@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('radion', ['ionic', 'radion.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -24,44 +24,45 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   $stateProvider
 
     .state('app', {
-      url: "/app",
+      url: '/app',
       abstract: true,
-      templateUrl: "templates/menu.html",
+      templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
 
     .state('app.search', {
-      url: "/search",
+      url: '/search',
       views: {
-        'menuContent' :{
-          templateUrl: "templates/search.html"
+        'mainContent' :{
+          templateUrl: 'templates/search.html'
         }
       }
     })
 
     .state('app.browse', {
-      url: "/browse",
+      url: '/browse',
       views: {
-        'menuContent' :{
-          templateUrl: "templates/browse.html"
+        'mainContent' :{
+          templateUrl: 'templates/browse.html',
+          controller: 'BrowseCtrl'
         }
       }
     })
     .state('app.playlists', {
-      url: "/playlists",
+      url: '/playlists',
       views: {
-        'menuContent' :{
-          templateUrl: "templates/playlists.html",
+        'mainContent' :{
+          templateUrl: 'templates/playlists.html',
           controller: 'PlaylistsCtrl'
         }
       }
     })
 
     .state('app.single', {
-      url: "/playlists/:playlistId",
+      url: '/playlists/:playlistId',
       views: {
-        'menuContent' :{
-          templateUrl: "templates/playlist.html",
+        'mainContent' :{
+          templateUrl: 'templates/playlist.html',
           controller: 'PlaylistCtrl'
         }
       }

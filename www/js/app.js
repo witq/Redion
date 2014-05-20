@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('radion', ['ionic', 'radion.controllers', 'radion.directives'])
 
-.run(function($ionicPlatform) {
+.run(['$ionicPlatform', function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,9 +18,9 @@ angular.module('radion', ['ionic', 'radion.controllers', 'radion.directives'])
       StatusBar.styleLightContent();
     }
   });
-})
+}])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
     .state('app', {
@@ -28,15 +28,6 @@ angular.module('radion', ['ionic', 'radion.controllers', 'radion.directives'])
       abstract: true,
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
-    })
-
-    .state('app.search', {
-      url: '/search',
-      views: {
-        'mainContent' :{
-          templateUrl: 'templates/search.html'
-        }
-      }
     })
 
     .state('app.browse', {
@@ -48,26 +39,17 @@ angular.module('radion', ['ionic', 'radion.controllers', 'radion.directives'])
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'mainContent' :{
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
 
     .state('app.single', {
-      url: '/playlists/:playlistId',
+      url: '/browse/:itemId',
       views: {
         'mainContent' :{
-          templateUrl: 'templates/playlist.html',
-          controller: 'PlaylistCtrl'
+          templateUrl: 'templates/single.html',
+          controller: 'SingleCtrl'
         }
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
-});
+  $urlRouterProvider.otherwise('/app/browse');
+}]);
 

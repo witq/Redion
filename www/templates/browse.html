@@ -8,7 +8,7 @@
       on-refresh="getData(false)">
     </ion-refresher>
     <ion-list>
-      <ion-item ng-repeat="item in data.items">
+      <ion-item ng-repeat="item in data.items" class="item item-thumbnail-left" ng-href="#/app/browse/{{item.data.id}}">
         <img ng-src="{{item.data.thumbnail}}">
         <h2 ng-bind="item.data.title"></h2>
       </ion-item>

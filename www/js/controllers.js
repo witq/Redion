@@ -23,7 +23,6 @@ angular.module('radion.controllers', ['radion.services'])
             items: response.data.children,
             after: response.data.after
           };
-          console.log($scope.data);
         }
       })
       .error(function (response, status) {

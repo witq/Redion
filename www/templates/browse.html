@@ -11,6 +11,7 @@
       <ion-item ng-repeat="item in data.items" class="item item-thumbnail-left" ng-href="#/app/browse/{{item.data.id}}">
         <img ng-src="{{item.data.thumbnail}}">
         <h2 ng-bind="item.data.title"></h2>
+        <p>{{data.subId}} Submitted 1 hour ago by {{item.data.author}} to <a href="#" ng-click="data.subId = item.data.subreddit">{{item.data.subreddit}}</a></p>
       </ion-item>
     </ion-list>
   </ion-content>

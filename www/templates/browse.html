@@ -3,12 +3,15 @@
     <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
-    <ul class="list">
-      <a class="item item-thumbnail-left" href="#" ng-repeat="item in data">
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="getData(false)">
+    </ion-refresher>
+    <ion-list>
+      <ion-item ng-repeat="item in data.items">
         <img ng-src="{{item.data.thumbnail}}">
         <h2 ng-bind="item.data.title"></h2>
-        <pre ng-bind="item.data | json"></pre>
-      </a>
-    </ul>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

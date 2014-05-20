@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('radion', ['ionic', 'radion.controllers'])
+angular.module('radion', ['ionic', 'radion.controllers', 'radion.directives'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -15,7 +15,7 @@ angular.module('radion', ['ionic', 'radion.controllers'])
     }
     if(window.StatusBar) {
       // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
+      StatusBar.styleLightContent();
     }
   });
 })

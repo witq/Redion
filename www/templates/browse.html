@@ -1,6 +1,6 @@
 <ion-view title="Browse">
   <ion-nav-buttons side="left">
-    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
     <ion-refresher
@@ -8,7 +8,7 @@
       on-refresh="getData(false)">
     </ion-refresher>
     <ion-list>
-      <ion-item ng-repeat="item in data.items" class="item item-thumbnail-left" ng-href="#/app/browse/{{item.data.id}}">
+      <ion-item ng-repeat="item in data.items" class="item item-thumbnail-left" ng-href="#/app/post/{{item.data.subreddit}}/{{item.data.id}}">
         <img ng-src="{{item.data.thumbnail}}">
         <h2 ng-bind="item.data.title"></h2>
         <p>{{item.data.created*1000 | moment:'DD.MM.YYYY' }} by {{item.data.author}} to <a href="#" ng-click="data.subId = item.data.subreddit">{{item.data.subreddit}}</a></p>

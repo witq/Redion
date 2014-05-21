@@ -1,4 +1,5 @@
 (function (angular, moment) {
+
   'use strict';
 
   angular.module('redion.filters', [])

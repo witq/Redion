@@ -1,20 +1,37 @@
-angular.module('radion.services', [])
+(function (angular) {
 
-.factory('Reddit', ['$http', function ($http) {
-  var Reddit = function () {
-    this.baseUrl = 'http://www.reddit.com/';
-    this.jsonpCallback = '.json?jsonp=JSON_CALLBACK';
+  'use strict';
+
+  var Reddit = function ($http) {
+
+    this._baseUrl = 'http://www.reddit.com/';
+    this._jsonpCallback = '.json?jsonp=JSON_CALLBACK';
+    this._http = $http;
+
   };
+
   Reddit.prototype.getAll = function (subId) {
     if (!subId) subId = 'new';
-    return $http({
-      method: 'JSONP',
-      url: [this.baseUrl, subId, this.jsonpCallback].join('')
-    });
+    return this._http.jsonp([
+      this.baseUrl,
+      subId,
+      this.jsonpCallback
+    ].join(''));
   };
-  Reddit.prototype.getOne = function (postId) {
-    if (!id) return;
-    // this method will return post details and comments
+
+  Reddit.prototype.getOne = function (subreddit, postId) {
+    if (!postId) return;
+    return this._http.jsonp([
+      this.baseUrl,
+      'r/',
+      subreddit,
+      '/comments/',
+      postId,
+      this.jsonpCallback
+    ].join(''));
   };
-  return new Reddit();
-}]);
+
+  angular.module('radion.services', [])
+    .service('Reddit', ['$http', Reddit]);
+
+})(angular);
